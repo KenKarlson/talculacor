@@ -1,8 +1,8 @@
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
-
 
     private static int a = 0;
     private static int b = 0;
@@ -21,34 +21,46 @@ public class Main {
         String insert = new Scanner(System.in).nextLine().toUpperCase();
         //Обработка данных
         String[] newData = insert.trim().split(" ");
-        String[] testA = newData[0].trim().split("");
-        String[] testB = newData[2].trim().split("");
+        //доделать завтра, исправить ввод запрещенных символов и их количество
+        if(newData.length == 3){
 
-        if (newData.length == 3 & (testA.length <= 2 || testB.length <= 2) & Character.isDigit(newData[0].charAt(0)) & Character.isDigit(newData[2].charAt(0))) {
-            if (Integer.parseInt(newData[0]) <= 10 & Integer.parseInt(newData[2]) <= 10) {
-                a = Integer.parseInt(newData[0]);
-                b = Integer.parseInt(newData[2]);
+        }
+
+        if (newData.length == 3) {
+            String[] testA = newData[0].trim().split("");
+            String[] testB = newData[2].trim().split("");
+
+
+            if (newData.length == 3 & (testA.length <= 2 || testB.length < 3) & Character.isDigit(newData[0].charAt(0)) & Character.isDigit(newData[2].charAt(0))) {
+                if (Integer.parseInt(newData[0]) <= 10 & Integer.parseInt(newData[2]) <= 10) {
+                    a = Integer.parseInt(newData[0]);
+                    b = Integer.parseInt(newData[2]);
+                    c = newData[1].charAt(0);
+
+                    System.out.println(returnResult(a, c, b));
+                } else {
+                    System.out.println("Error 20");
+                }
+            } else if (!Character.isDigit(newData[0].charAt(0)) & !Character.isDigit(newData[2].charAt(0)) & newData.length <= 3) {
+                a1 = newData[0];
+                b1 = newData[2];
                 c = newData[1].charAt(0);
 
-                System.out.println(returnResult(a, c, b));
-            }
-        } else if (!Character.isDigit(newData[0].charAt(0)) & !Character.isDigit(newData[2].charAt(0)) & newData.length <= 3) {
-            a1 = newData[0];
-            b1 = newData[2];
-            c = newData[1].charAt(0);
+                int xw3 = returnResult(returnA(a1), c, returnA(b1));
+                if (xw3 < 0) {
+                    xw3 = Math.abs(xw3);
+                }
+                if (xw3 != 0) {
+                    System.out.println(returnRomeo(xw3));
+                } else {
+                    System.out.println(0);
+                }
 
-            int xw3 = returnResult(returnA(a1), c, returnA(b1));
-            if (xw3 < 0) {
-                xw3 = Math.abs(xw3);
+            } else {
+                System.out.println("Error 25");
             }
-            if(xw3 !=0){
-                System.out.println(returnRomeo(xw3));
-            }else{
-                System.out.println(0);
-            }
-
         } else {
-            System.out.println("Error 25");
+            System.out.println("Error 19 критическая");
         }
     }
 
@@ -67,7 +79,7 @@ public class Main {
                 if (b != 0) {
                     e = a / b;
                 } else {
-                    System.out.println("Error");
+                    System.out.println("Error 21");
                 }
                 break;
 
