@@ -18,15 +18,13 @@ public class Main {
     public static void main(String[] args) {
         //Ввод данных
         System.out.println("Введите необходимые числа и операцию разделяя их пробелом !");
-        String insert = new Scanner(System.in).nextLine();
-        insert.toUpperCase(Locale.ROOT);
+        String insert = new Scanner(System.in).nextLine().toUpperCase();
         //Обработка данных
         String[] newData = insert.trim().split(" ");
         String[] testA = newData[0].trim().split("");
         String[] testB = newData[2].trim().split("");
 
         if (newData.length == 3 & (testA.length <= 2 || testB.length <= 2) & Character.isDigit(newData[0].charAt(0)) & Character.isDigit(newData[2].charAt(0))) {
-            System.out.println("OK!");
             if (Integer.parseInt(newData[0]) <= 10 & Integer.parseInt(newData[2]) <= 10) {
                 a = Integer.parseInt(newData[0]);
                 b = Integer.parseInt(newData[2]);
@@ -35,14 +33,11 @@ public class Main {
                 System.out.println(returnResult(a, c, b));
             }
         } else if (!Character.isDigit(newData[0].charAt(0)) & !Character.isDigit(newData[2].charAt(0)) & newData.length <= 3) {
-            System.out.println("OK to!");
-            //имеем: I II III IV V VI VII VIII IX X
             a1 = newData[0];
             b1 = newData[2];
             c = newData[1].charAt(0);
 
             int xw3 = returnResult(returnA(a1), c, returnA(b1));
-            System.out.println(xw3);
             if (xw3 < 0) {
                 xw3 = Math.abs(xw3);
             }
@@ -73,10 +68,6 @@ public class Main {
 
         }
         return e;
-    }
-
-    public static int returnResult2(char a1, char c, char b1) {
-        return 0;
     }
 
     public static int returnA(String ax) {
