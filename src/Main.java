@@ -12,6 +12,9 @@ public class Main {
     private static String a1;
     private static String b1;
 
+    private static Integer[] desimal = {100, 90, 50, 40, 10, 9, 5, 4, 1};
+    private static String[] stringi = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
     public static void main(String[] args) {
         //Ввод данных
         System.out.println("Введите необходимые числа и операцию разделяя их пробелом !");
@@ -24,7 +27,7 @@ public class Main {
 
         if (newData.length == 3 & (testA.length <= 2 || testB.length <= 2) & Character.isDigit(newData[0].charAt(0)) & Character.isDigit(newData[2].charAt(0))) {
             System.out.println("OK!");
-            if(Integer.parseInt(newData[0])<=10 & Integer.parseInt(newData[2]) <=10) {
+            if (Integer.parseInt(newData[0]) <= 10 & Integer.parseInt(newData[2]) <= 10) {
                 a = Integer.parseInt(newData[0]);
                 b = Integer.parseInt(newData[2]);
                 c = newData[1].charAt(0);
@@ -40,7 +43,11 @@ public class Main {
 
             int xw3 = returnResult(returnA(a1), c, returnA(b1));
             System.out.println(xw3);
-        } else{
+            if (xw3 < 0) {
+                xw3 = Math.abs(xw3);
+            }
+            System.out.println(returnRomeo(xw3));
+        } else {
             System.out.println("Error 25");
         }
     }
@@ -54,7 +61,7 @@ public class Main {
                 e = a - b;
                 break;
             case ('*'):
-                e = a + b;
+                e = a * b;
                 break;
             case ('/'):
                 if (b != 0) {
@@ -68,13 +75,13 @@ public class Main {
         return e;
     }
 
-    public static int returnResult2(char a1, char c, char b1){
-        return  0;
+    public static int returnResult2(char a1, char c, char b1) {
+        return 0;
     }
 
     public static int returnA(String ax) {
         int i = 0;
-        switch (ax){
+        switch (ax) {
             case ("I"):
                 i = 1;
                 break;
@@ -108,4 +115,17 @@ public class Main {
         }
         return i;
     }
+
+    public static String returnRomeo(int xw3) {
+        String newResult = "";
+        for (int i = 0; i < desimal.length; i++) {
+            while (desimal[i] <= xw3) {
+                newResult += stringi[i];
+                xw3 = xw3 - desimal[i];
+            }
+        }
+        return newResult;
+
+    }
+
 }
