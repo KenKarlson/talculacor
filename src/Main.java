@@ -41,7 +41,12 @@ public class Main {
             if (xw3 < 0) {
                 xw3 = Math.abs(xw3);
             }
-            System.out.println(returnRomeo(xw3));
+            if(xw3 !=0){
+                System.out.println(returnRomeo(xw3));
+            }else{
+                System.out.println(0);
+            }
+
         } else {
             System.out.println("Error 25");
         }
